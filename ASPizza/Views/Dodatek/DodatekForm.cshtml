@@ -1,0 +1,20 @@
+﻿@model ASPizza.ViewModels.DodatekFormViewModel
+@{
+    ViewBag.Title = "DodatekForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Dodaj nowy Dodatek</h2>
+@using (Html.BeginForm("Save", "Dodatek"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Dodatek.Name, "Nazwa")
+        @Html.TextBoxFor(m => m.Dodatek.Name, new { @class = "form-control" })
+    </div>
+    <div style="color:#ff0000;">
+        @Html.ValidationMessageFor(m => m.Dodatek.Name)
+    </div>
+
+
+    @Html.HiddenFor(m => m.Dodatek.Id)
+    <button type="submit" class="btn btn-success"><h2>Stwórz &oast;</h2></button>
+}

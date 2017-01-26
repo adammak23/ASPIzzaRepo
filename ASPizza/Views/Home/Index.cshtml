@@ -1,0 +1,23 @@
+﻿@model ASPizza.Models.Pizza
+@{
+    ViewBag.Title = "Home Page";
+}
+<link rel="icon" href="~/images/Pizza-icon.png" type="image/x-icon" />
+<div class="jumbotron">
+    <h1>Pizza Manager</h1>
+    <p class="lead">Aplikacja służąca do tworzenia pizzy</p>
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Zacznij twórczość</h2>
+        <p>
+            Dzięki tej stronie możesz utworzyć pizzę swoich marzeń!
+        </p>
+        <p><a class="btn btn-warning" href="@Url.Action("New", "Pizza")"> <h>Stwórz pizze &oplus;</h> </a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Chcesz więcej?</h2>
+        <p><a href="https://pizzaportal.pl/" class="btn btn-warning btn-lg">Więcej pizzy na pizzaportal &RightTriangle;</a></p>
+    </div>
+</div>

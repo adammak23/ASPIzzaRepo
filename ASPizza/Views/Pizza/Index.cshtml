@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ASPizza.Models.Pizza>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using ASPizza.Helpers
+<p></p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Pizza</th>
+            <th>Dodatek</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pizza in Model)
+        {
+            <tr>
+                <td><a>&ocir; </a>@Html.ActionLink(pizza.Name, "Details", "Pizza", new { id = pizza.Id }, null) </td> 
+                <td>&oast; @pizza.Dodatek.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p><a class="btn btn-warning" href="@Url.Action("New", "Pizza")"> <h>Stwórz nową pizzę &oplus;</h> </a></p>
+@Html.Raw(LabelHelper.Label("Pizza.jpg"))

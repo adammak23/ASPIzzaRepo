@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ASPizza.Models.Pizza>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p></p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Pizza</th>
+            <th>Dodatek</th>
+            <th>Edycja</th>
+            <th>Usuń</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pizza in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(pizza.Name, "Details", "Pizza", new { id = pizza.Id }, null)</td>
+                <td>@pizza.Dodatek.Name</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Pizza", new { id = pizza.Id }, null)</td>
+                <td>@Html.ActionLink("Delete", "Delete", "Pizza", new { id = pizza.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-warning" href="@Url.Action("New", "Pizza")"> <h3>Stwórz pizze &oplus;</h3> </a>
+<a class="btn btn-warning" href="@Url.Action("New", "Dodatek")"> <h3>Stwórz dodatek &oast;</h3> </a>
+<p></p>
+<a class="btn btn-success" href="@Url.Action("Index", "Dodatek")"> <h3>Dodatki</h3> </a>

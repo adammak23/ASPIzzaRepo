@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ASPizza.Models.Dodatek>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p></p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Dodatek</th>
+            <th>Usuń</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dodatek in Model)
+        {
+            <tr>
+                <td><a>&oast; </a>@Html.ActionLink(dodatek.Name, "Index", "Dodatek", new { id = dodatek.Id }, null) </td>
+                <td>@Html.ActionLink("Delete", "Delete", "Dodatek", new { id = dodatek.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p><a class="btn btn-success" href="@Url.Action("New", "Dodatek")"> <h>Stwórz nowy dodatek &oast;</h> </a></p>

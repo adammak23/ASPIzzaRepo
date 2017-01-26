@@ -1,0 +1,10 @@
+﻿@model ASPizza.Models.Pizza
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="jumbotron">
+    <h1>@Model.Name &ocir;</h1>
+    <p class="lead">@Model.Price zł</p>
+    <p class="lead">Dodatek: @Model.Dodatek.Name &oast;</p>
+</div>

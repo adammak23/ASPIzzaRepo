@@ -1,0 +1,37 @@
+﻿@model ASPizza.ViewModels.PizzaFormViewModel
+@{
+    ViewBag.Title = "PizzaManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Nowa Pizza &ocir;</h2>
+@using (Html.BeginForm("Save", "Pizza"))
+{
+    <div style="color:#ff0000;">
+        @Html.ValidationSummary(true, "Wystąpił błąd!")
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Pizza.Name, "Nazwa")
+        @Html.TextBoxFor(m => m.Pizza.Name, new { @class = "form-control" })
+        <div style="color:#ff0000;">
+            @Html.ValidationMessageFor(m => m.Pizza.Name)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Pizza.Price, "Cena")
+        @Html.TextBoxFor(m => m.Pizza.Price, new { @class = "form-control" })
+        <div style="color:#ff0000;">
+            @Html.ValidationMessageFor(m => m.Pizza.Price)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Pizza.DodatekId, "Dodatek")
+        @Html.DropDownListFor(m => m.Pizza.DodatekId, new SelectList(Model.Dodatki, "Id", "Name"), "Wybierz Dodatek", new { @class = "form-control" })
+        <div style="color:#ff0000;">
+            @Html.ValidationMessageFor(m => m.Pizza.DodatekId)
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.Pizza.Id)
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    }
