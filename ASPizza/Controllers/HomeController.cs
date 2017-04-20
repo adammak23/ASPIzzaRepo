@@ -10,6 +10,7 @@ namespace ASPizza.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "Main page.";
             return View();
         }
 

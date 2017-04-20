@@ -11,7 +11,7 @@ namespace ASPizza.Models
     {
         public int Id { get; set; }
 
-        [StringValidator]
+        [Required(ErrorMessage = "Podaj nazwę")]
         public string Name { get; set; }
 
         [Cena]

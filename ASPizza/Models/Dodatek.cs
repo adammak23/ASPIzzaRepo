@@ -11,7 +11,8 @@ namespace ASPizza.Models
     {
 
         public int Id { get; set; }
-        [DodatekStringValidator]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "Podana nazwa dodatku jest za krótka")]
+        [RegularExpression(@"^[a-zA-ZĄĆĘŁŃÓŚŹŻąćęłńóżź \\s \\-]*$", ErrorMessage = "Zła nazwa dodatku")]
         public string Name { get; set; }
     }
 }

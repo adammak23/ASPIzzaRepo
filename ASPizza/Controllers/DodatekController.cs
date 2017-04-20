@@ -9,19 +9,23 @@ using ASPizza.ViewModels;
 
 public class DodatekController : Controller
 {
-    private ApplicationDbContext _context;
+    private IPizzaSharingContext _context;
 
         public DodatekController()
         {
-            _context = new ApplicationDbContext();
+            _context = new PizzaSharingContext();
         }
-
-        protected override void Dispose(bool disposing)
+        public DodatekController(IPizzaSharingContext Context)
         {
-            _context.Dispose();
+            _context = Context;
         }
 
-        public ActionResult New()
+    /*      protected override void Dispose(bool disposing)
+          {
+              _context.Dispose();
+          }
+  */
+    public ActionResult New()
         {
             var viewModel = new DodatekFormViewModel();
 
@@ -32,14 +36,14 @@ public class DodatekController : Controller
         [Authorize(Roles = "Admin")]
     public ActionResult Save(Dodatek Dodatek)
         {
-            if (Dodatek.Id == 0)
-                _context.Dodatki.Add(Dodatek);
-            else
-            {
-                var DodatekInDb = _context.Dodatki.Single(c => c.Id == Dodatek.Id);
-                DodatekInDb.Name = Dodatek.Name;
+        if (Dodatek.Id == 0)
+            _context.Add(Dodatek);
+        else
+        {
+            var DodatekInDb = _context.Dodatki.Single(c => c.Id == Dodatek.Id);
+            DodatekInDb.Name = Dodatek.Name;
 
-            }
+        }
 
             _context.SaveChanges();
 
@@ -60,14 +64,48 @@ public class DodatekController : Controller
     [Authorize(Roles = "Admin")]
     public ActionResult Delete(int id)
     {
-        Dodatek dodatek = _context.Dodatki.Find(id);
+        Dodatek dodatek = _context.FindDodatekById(id);
         if (dodatek == null)
         {
             return HttpNotFound();
         }
-        _context.Dodatki.Remove(dodatek);
+        _context.Delete(dodatek);
         _context.SaveChanges();
         return RedirectToAction("Index", "Dodatek");
     }
 
+    [HandleError(ExceptionType = typeof(Exception), View = "ErrorId")]
+    public ActionResult DisplayById(int id)
+    {
+        Dodatek dodatek = _context.FindDodatekById(id);
+
+        if (dodatek == null)
+        {
+            throw new Exception();
+        }
+        return View("Display", dodatek);
+    }
+
+    public ActionResult Edit(int id)
+    {
+        Dodatek dodatek = _context.FindDodatekById(id);
+        if (dodatek == null)
+        {
+            throw new Exception();
+        }
+        return View("Edit", dodatek);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Dodatek dodatek)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View("Edit", dodatek);
+        }
+        Dodatek editDodatek = _context.FindDodatekById(dodatek.Id);
+        editDodatek.Name = dodatek.Name;
+        _context.SaveChanges();
+        return RedirectToAction("All", "Pizza");
+    }
 }
