@@ -266,6 +266,7 @@
     <Compile Include="Models\Validators\StringValidator.cs" />
     <Compile Include="ViewModels\DodatekFormViewModel.cs" />
     <Compile Include="ViewModels\PizzaFormViewModel.cs" />
+    <Compile Include="ViewModels\TestModelHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-united.css" />
@@ -350,33 +351,43 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701240012595_initial.resx">
       <DependentUpon>201701240012595_initial.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701240015153_initial1.resx">
       <DependentUpon>201701240015153_initial1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701240017192_initial2.resx">
       <DependentUpon>201701240017192_initial2.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701240019439_update-pizza-class.resx">
       <DependentUpon>201701240019439_update-pizza-class.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701241359348_Validations.resx">
       <DependentUpon>201701241359348_Validations.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701241406156_ValidationsDodatek.resx">
       <DependentUpon>201701241406156_ValidationsDodatek.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701241431112_StringValidation.resx">
       <DependentUpon>201701241431112_StringValidation.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701241436038_StringValidations.resx">
       <DependentUpon>201701241436038_StringValidations.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701241459107_ListValidation.resx">
       <DependentUpon>201701241459107_ListValidation.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701261116490_adminxd.resx">
       <DependentUpon>201701261116490_adminxd.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

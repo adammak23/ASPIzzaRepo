@@ -11,7 +11,7 @@ using ASPizzaUnitTest.Doubles;
 using ASPizza.ViewModels;
 using System.Web.Mvc;
 
-namespace ASPizzaUmitTest.Tests
+namespace ASPizzaUnitTest.Tests
 {
     [TestClass]
     public class PizzaMoqTests
@@ -114,6 +114,7 @@ namespace ASPizzaUmitTest.Tests
             Pizza pizza = new Pizza();
             pizza.Name = "Bekonowa";
             pizza.Price = 19.99M;
+            pizza.Id = 1;
             Mock<IPizzaSharingContext> context = new Mock<IPizzaSharingContext>();
             context.Setup(x => x.FindPizzaById(2)).Returns(pizza);
             var controller = new PizzaController(context.Object);
@@ -124,7 +125,7 @@ namespace ASPizzaUmitTest.Tests
         }
 
         [TestMethod]
-        public void TestDeletePizzaIsNullMoq()
+        public void TestDeletePizzaIsNotNullMoq()
         {
             Pizza pizza = new Pizza();
             pizza.Name = "Bekonowa";
@@ -135,7 +136,7 @@ namespace ASPizzaUmitTest.Tests
             var controller = new PizzaController(context.Object);
 
             var result = controller.Delete(2) as ViewResult;
-            Assert.IsNull(result);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -207,6 +208,7 @@ namespace ASPizzaUmitTest.Tests
             Assert.AreEqual("Pizza", result.RouteValues["Controller"]);
         }
 
+        /*
         [TestMethod]
         public void TestAddConf()
         {
@@ -233,8 +235,7 @@ namespace ASPizzaUmitTest.Tests
 
             Assert.AreEqual("All", result.RouteValues["Action"]);
             Assert.AreEqual("Pizza", result.RouteValues["Controller"]);
-
-        }
+        } */
 
         [TestMethod]
         public void TestEditPizzaMoq()
@@ -252,35 +253,6 @@ namespace ASPizzaUmitTest.Tests
 
             Assert.AreEqual("All", result.RouteValues["Action"]);
             Assert.AreEqual("Pizza", result.RouteValues["Controller"]);
-        }
-
-        [TestMethod]
-        public void TestAddModelNotValidMoq()
-        {
-
-            Pizza pizza = new Pizza();
-            pizza.Name = "Mięsna";
-            pizza.Price = 19.99M;
-
-            Dodatek dodatek = new Dodatek();
-            dodatek.Name = "Oliwki";
-            dodatek.Id = 5;
-
-            PizzaFormViewModel PizzaAdd = new PizzaFormViewModel();
-            PizzaAdd.Pizza.Name = "Mięsna";
-            PizzaAdd.Pizza.Price = 19.99M;
-            PizzaAdd.Pizza.Id = 1;
-            PizzaAdd.Pizza.Dodatek = dodatek;
-            PizzaAdd.Pizza.DodatekId = dodatek.Id;
-
-            Mock<IPizzaSharingContext> context = new Mock<IPizzaSharingContext>();
-            context.Setup(x => x.Add(dodatek)).Returns(dodatek);
-            context.Setup(s => s.Add(pizza)).Returns(pizza);
-            var controller = new PizzaController(context.Object);
-
-            controller.ViewData.ModelState.AddModelError("Name", "Podaj nazwę");
-            var result = (ViewResult)controller.Add(PizzaAdd);
-            Assert.AreEqual("Add", result.ViewName);
         }
 
         [TestMethod]

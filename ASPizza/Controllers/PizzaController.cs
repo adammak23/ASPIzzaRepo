@@ -207,8 +207,6 @@ public class PizzaController : Controller
         {
             return HttpNotFound();
         }
-        _context.Delete(pizza);
-        _context.SaveChanges();
-        return RedirectToAction("Index", "Pizza");
+        return View("Delete", pizza);
     }
 }

@@ -111,8 +111,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Doubles\FakePizzaSharingContext.cs" />
+    <Compile Include="Tests\DodatekControllerTest.cs" />
     <Compile Include="Tests\DodatekMoqTest.cs" />
     <Compile Include="Tests\HomeControllerTest.cs" />
+    <Compile Include="Tests\PizzaControllerTest.cs" />
     <Compile Include="Tests\PizzaModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\PizzaMoqTests.cs" />
