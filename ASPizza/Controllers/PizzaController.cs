@@ -8,6 +8,7 @@ using ASPizza.Models;
 using ASPizza.ViewModels;
 using ASPizza.Controllers;
 
+[AllowAnonymous]
 public class PizzaController : Controller
 {
     private IPizzaSharingContext _context;
