@@ -1,0 +1,7 @@
+E:\Users\Marci\Desktop\ASPIzzaRepo-master\CodedUITestProject\bin\Debug\CodedUITestProject.dll
+E:\Users\Marci\Desktop\ASPIzzaRepo-master\CodedUITestProject\bin\Debug\CodedUITestProject.pdb
+E:\Users\Marci\Desktop\ASPIzzaRepo-master\CodedUITestProject\obj\Debug\CodedUITestProject.csprojResolveAssemblyReference.cache
+E:\Users\Marci\Desktop\ASPIzzaRepo-master\CodedUITestProject\obj\Debug\CodedUITestProject.dll
+E:\Users\Marci\Desktop\ASPIzzaRepo-master\CodedUITestProject\obj\Debug\CodedUITestProject.pdb
+E:\Users\Marci\Desktop\ASPIzzaRepo-master\CodedUITestProject\bin\Debug\WebDriver.dll
+E:\Users\Marci\Desktop\ASPIzzaRepo-master\CodedUITestProject\bin\Debug\WebDriver.xml

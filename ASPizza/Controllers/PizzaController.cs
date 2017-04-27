@@ -8,6 +8,7 @@ using ASPizza.Models;
 using ASPizza.ViewModels;
 using ASPizza.Controllers;
 
+[AllowAnonymous]
 public class PizzaController : Controller
 {
     private IPizzaSharingContext _context;
@@ -208,5 +209,16 @@ public class PizzaController : Controller
             return HttpNotFound();
         }
         return View("Delete", pizza);
+    }
+    public ActionResult Delete2(int id)
+    {
+        Pizza pizza = _context.FindPizzaById(id);
+        if (pizza == null)
+        {
+            return HttpNotFound();
+        }
+        _context.Delete(pizza);
+        _context.SaveChanges();
+        return RedirectToAction("Index", "Pizza");
     }
 }

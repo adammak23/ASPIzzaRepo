@@ -7,6 +7,7 @@ using System.Data.Entity;
 using ASPizza.Models;
 using ASPizza.ViewModels;
 
+[AllowAnonymous]
 public class DodatekController : Controller
 {
     private IPizzaSharingContext _context;
@@ -33,7 +34,7 @@ public class DodatekController : Controller
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
     public ActionResult Save(Dodatek Dodatek)
         {
         if (Dodatek.Id == 0)
@@ -49,7 +50,7 @@ public class DodatekController : Controller
 
             return RedirectToAction("Index", "Pizza");
         }
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public ViewResult Index()
     {
         var Dodatki = _context.Dodatki;
@@ -61,7 +62,7 @@ public class DodatekController : Controller
         return View("Index", Dodatki);
     }
 
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public ActionResult Delete(int id)
     {
         Dodatek dodatek = _context.FindDodatekById(id);
@@ -86,6 +87,7 @@ public class DodatekController : Controller
         return View("Display", dodatek);
     }
 
+    [HandleError(ExceptionType = typeof(Exception), View = "ErrorId")]
     public ActionResult Edit(int id)
     {
         Dodatek dodatek = _context.FindDodatekById(id);

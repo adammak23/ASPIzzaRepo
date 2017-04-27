@@ -10,7 +10,8 @@ using ASPizza.Models;
 
 namespace ASPizza.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

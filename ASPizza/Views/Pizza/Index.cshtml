@@ -10,6 +10,7 @@
         <tr>
             <th>Pizza</th>
             <th>Dodatek</th>
+            <th>Usuń</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
             <tr>
                 <td><a>&ocir; </a>@Html.ActionLink(pizza.Name, "Details", "Pizza", new { id = pizza.Id }, null) </td> 
                 <td>&oast; @pizza.Dodatek.Name</td>
+                <td>@Html.ActionLink("Delete", "Delete2", "Pizza", new { id = pizza.Id }, null)</td>
             </tr>
         }
     </tbody>

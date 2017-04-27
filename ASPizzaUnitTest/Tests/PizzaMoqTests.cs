@@ -208,35 +208,6 @@ namespace ASPizzaUnitTest.Tests
             Assert.AreEqual("Pizza", result.RouteValues["Controller"]);
         }
 
-        /*
-        [TestMethod]
-        public void TestAddConf()
-        {
-            Pizza pizza = new Pizza();
-            pizza.Name = "Mięsna";
-            pizza.Price = 19.99M;
-
-            Dodatek dodatek = new Dodatek();
-            dodatek.Name = "Oliwki";
-            dodatek.Id = 5;
-
-            PizzaFormViewModel PizzaAdd = new PizzaFormViewModel();
-            PizzaAdd.Pizza.Name = "Mięsna";
-            PizzaAdd.Pizza.Price = 19.99M;
-            PizzaAdd.Pizza.Id = 1;
-            PizzaAdd.Pizza.Dodatek = dodatek;
-            PizzaAdd.Pizza.DodatekId = dodatek.Id;
-
-            Mock <IPizzaSharingContext> context = new Mock<IPizzaSharingContext>();
-            context.Setup(x => x.Add(dodatek)).Returns(dodatek);
-            context.Setup(s => s.Add(pizza)).Returns(pizza);
-            var controller = new PizzaController(context.Object);
-            var result = controller.Add(PizzaAdd) as RedirectToRouteResult;
-
-            Assert.AreEqual("All", result.RouteValues["Action"]);
-            Assert.AreEqual("Pizza", result.RouteValues["Controller"]);
-        } */
-
         [TestMethod]
         public void TestEditPizzaMoq()
         {
